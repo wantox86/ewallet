@@ -1,4 +1,4 @@
-package id.wantox86.ewallet.controller;
+package id.wantox86.ewallet.controller.auth;
 
 import id.wantox86.ewallet.model.response.HandlerResponse;
 import id.wantox86.ewallet.model.data.UserToken;

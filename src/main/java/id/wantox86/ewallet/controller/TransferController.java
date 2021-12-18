@@ -2,6 +2,7 @@ package id.wantox86.ewallet.controller;
 
 import com.github.davidmoten.rx.jdbc.tuple.Tuple2;
 import com.google.gson.Gson;
+import id.wantox86.ewallet.controller.auth.Handler;
 import id.wantox86.ewallet.database.Datastore;
 import id.wantox86.ewallet.database.TransactionDataStore;
 import id.wantox86.ewallet.model.data.Transaction;

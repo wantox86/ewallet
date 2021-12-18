@@ -1,6 +1,7 @@
 package id.wantox86.ewallet.controller;
 
 import com.google.gson.Gson;
+import id.wantox86.ewallet.controller.auth.Handler;
 import id.wantox86.ewallet.database.Datastore;
 import id.wantox86.ewallet.model.data.UserToken;
 import id.wantox86.ewallet.model.response.HandlerResponse;
@@ -11,7 +12,7 @@ import rx.Observable;
 /**
  * Created by wawan on 17/12/21.
  */
-public class GetTopTransactionController implements Handler{
+public class GetTopTransactionController implements Handler {
     private Datastore datastore;
     private Gson gson;
 

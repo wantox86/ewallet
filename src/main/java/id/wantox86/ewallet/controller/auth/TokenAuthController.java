@@ -1,4 +1,4 @@
-package id.wantox86.ewallet.controller;
+package id.wantox86.ewallet.controller.auth;
 
 import id.wantox86.ewallet.database.Datastore;
 import id.wantox86.ewallet.model.data.UserToken;
@@ -13,14 +13,14 @@ import java.util.Map;
 /**
  * Created by wawan on 17/12/21.
  */
-public class TokenAuthValidator {
+public class TokenAuthController {
     private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
     private Map<String, UserToken> userTokenMap = new HashMap<>();
     private Handler handler;
     private Datastore datastore;
 
-    public TokenAuthValidator(Handler handler, Datastore datastore) {
+    public TokenAuthController(Handler handler, Datastore datastore) {
         this.handler = handler;
         this.datastore = datastore;
     }

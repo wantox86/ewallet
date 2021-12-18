@@ -5,6 +5,8 @@ import com.google.gson.Gson;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import id.wantox86.ewallet.controller.*;
+import id.wantox86.ewallet.controller.auth.NoAuthController;
+import id.wantox86.ewallet.controller.auth.TokenAuthController;
 import id.wantox86.ewallet.database.Datastore;
 import id.wantox86.ewallet.database.DatastoreImpl;
 import id.wantox86.ewallet.database.TransactionDataStore;
@@ -37,22 +39,22 @@ public class Server extends AbstractVerticle {
         router.route().handler(BodyHandler.create());
 
         router.post("/api/v1/ewallet/user/register")
-                .handler(new RegisterController(gson, datastore, transactionDataStore));
+                .handler(new NoAuthController(new RegisterUserController(gson, datastore, transactionDataStore))::handle);
 
         router.get("/api/v1/ewallet/user/balance")
-                .handler(new TokenAuthValidator(new GetBalanceController(datastore, gson), datastore)::handle);
+                .handler(new TokenAuthController(new GetBalanceController(datastore, gson), datastore)::handle);
 
         router.post("/api/v1/ewallet/user/topup")
-                .handler(new TokenAuthValidator(new TopupBalanceController(transactionDataStore, gson), datastore)::handle);
+                .handler(new TokenAuthController(new TopupBalanceController(transactionDataStore, gson), datastore)::handle);
 
         router.post("/api/v1/ewallet/transfer")
-                .handler(new TokenAuthValidator(new TransferController(datastore, transactionDataStore, gson), datastore)::handle);
+                .handler(new TokenAuthController(new TransferController(datastore, transactionDataStore, gson), datastore)::handle);
 
         router.get("/api/v1/ewallet/report/user_transaction")
-                .handler(new TokenAuthValidator(new GetTopTransactionController(datastore, gson), datastore)::handle);
+                .handler(new TokenAuthController(new GetTopTransactionController(datastore, gson), datastore)::handle);
 
         router.get("/api/v1/ewallet/report/top_user")
-                .handler(new TokenAuthValidator(new GetTopUserController(datastore, gson), datastore)::handle);
+                .handler(new TokenAuthController(new GetTopUserController(datastore, gson), datastore)::handle);
 
         return router;
     }
