@@ -65,7 +65,7 @@ public class Server extends AbstractVerticle {
 
         hikariConfig.setJdbcUrl("jdbc:mysql://127.0.0.1:3306/ewallet?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC");
         hikariConfig.setUsername("root");
-        hikariConfig.setPassword("medieval");
+        hikariConfig.setPassword("");
         hikariConfig.setMaximumPoolSize(30);
 
         HikariDataSource hikariDataSource = new HikariDataSource(hikariConfig);
